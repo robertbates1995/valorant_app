@@ -9,17 +9,25 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            'VALORANT',
-            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-          ),
-        ),
-        body: Container(
+        appBar: _buildAppBar(),
+        body: _buildContainer());
+  }
+
+  Container _buildContainer() {
+    return Container(
           constraints: BoxConstraints.expand(),
-            child: Image.asset(
-          'assets/images/Valorant Logo.png',
-        )));
+          child: Image.asset(
+            'assets/images/Valorant Logo.png',
+          ));
+  }
+
+  AppBar _buildAppBar() {
+    return AppBar(
+        centerTitle: true,
+        title: Text(
+          'VALORANT',
+          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+        ),
+      );
   }
 }
