@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:valorantapp/maps_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -15,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Drawer(
       child: ListView(
         children: <Widget>[
-          Text('test')
+          MapsScreen(),
         ],
       ),
     );
@@ -26,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
         constraints: BoxConstraints.expand(),
         color: Color(0xff0f1922),
         child: Image.asset(
-          'assets/images/Valorant Logo.png',
+          'assets/images/valorant_logo.png',
         ));
   }
 
