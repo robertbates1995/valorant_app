@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:valorantapp/maps_screen.dart';
+import 'package:valorantapp/valorant_screen.dart';
+
+import 'map_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -7,28 +9,51 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _selectedDrawerIndex = 0;
+
+  Widget _getDrawerItemWidget(int pos) {
+    switch (pos) {
+      case 0:
+        return ValorantScreen();
+      case 1:
+        return MapScreen();
+
+      default:
+        return Text("Error");
+    }
+  }
+
+  _onSelectItem(int index) {
+    setState(() => _selectedDrawerIndex = index);
+    Navigator.of(context).pop(); // close the drawer
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: _buildAppBar(), body: _buildContainer(), drawer: _buildDrawer(),);
+    return Scaffold(
+      appBar: _buildAppBar(),
+      body: _getDrawerItemWidget(_selectedDrawerIndex),
+      drawer: _buildDrawer(),
+    );
   }
 
   Drawer _buildDrawer() {
     return Drawer(
       child: ListView(
         children: <Widget>[
-          MapsScreen(),
+          listTile("Valorant", 0),
+          listTile("Maps", 1)
         ],
       ),
     );
   }
 
-  Container _buildContainer() {
-    return Container(
-        constraints: BoxConstraints.expand(),
-        color: Color(0xff0f1922),
-        child: Image.asset(
-          'assets/images/valorant_logo.png',
-        ));
+  ListTile listTile(String title, int index) {
+    return ListTile(
+      title: Text(title),
+      selected: _selectedDrawerIndex == index,
+      onTap: () => _onSelectItem(index),
+    );
   }
 
   AppBar _buildAppBar() {
@@ -42,7 +67,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Text _mainTitleMaker() {
     return Text(
       'VALORANT',
-      style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Color(0xffff4656)),
+      style: TextStyle(
+          fontSize: 32, fontWeight: FontWeight.bold, color: Color(0xffff4656)),
     );
   }
 }
