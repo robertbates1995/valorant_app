@@ -37,18 +37,22 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Drawer _buildDrawer() {
-    return Drawer(
-      child: ListView(
-        children: <Widget>[
-          listTile("Main", 0),
-          listTile("Maps", 1)
-        ],
+  Widget _buildDrawer() {
+    return Container(
+      width: 200,
+      child: Drawer(
+        child: ListView(
+          children: <Widget>[
+            listTile("Main", 0),
+            listTile("Maps", 1),
+            AboutListTile()
+          ],
+        ),
       ),
     );
   }
 
-  ListTile listTile(String title, int index) {
+  Widget listTile(String title, int index) {
     return ListTile(
       contentPadding: EdgeInsets.symmetric(horizontal: 4),
       title: Text(title, textScaleFactor: 3, textAlign: TextAlign.center,),
