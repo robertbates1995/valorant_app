@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Drawer(
       child: ListView(
         children: <Widget>[
-          listTile("Valorant", 0),
+          listTile("Main", 0),
           listTile("Maps", 1)
         ],
       ),
@@ -50,7 +50,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   ListTile listTile(String title, int index) {
     return ListTile(
-      title: Text(title),
+      contentPadding: EdgeInsets.symmetric(horizontal: 4),
+      title: Text(title, textScaleFactor: 3, textAlign: TextAlign.center,),
       selected: _selectedDrawerIndex == index,
       onTap: () => _onSelectItem(index),
     );
