@@ -43,9 +43,15 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Drawer(
         child: ListView(
           children: <Widget>[
-            listTile("Main", 0),
-            listTile("Maps", 1),
-            AboutListTile()
+            Container(
+              child: listTile("Main", 0),
+              color: Color(0xff0f1922),
+            ),
+            Container(
+              child: listTile("Maps", 1),
+              color: Color(0xff0f1922),
+            ),
+            AboutListTile(),
           ],
         ),
       ),
@@ -55,7 +61,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget listTile(String title, int index) {
     return ListTile(
       contentPadding: EdgeInsets.symmetric(horizontal: 4),
-      title: Text(title, textScaleFactor: 3, textAlign: TextAlign.center,),
+      title: Text(
+        title,
+        textScaleFactor: 3,
+        textAlign: TextAlign.center,
+        style: TextStyle(color: Colors.white),
+      ),
       selected: _selectedDrawerIndex == index,
       onTap: () => _onSelectItem(index),
     );
