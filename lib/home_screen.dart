@@ -41,35 +41,34 @@ class _HomeScreenState extends State<HomeScreen> {
     return Container(
       width: 200,
       child: Drawer(
-        child: ListView(
-          children: <Widget>[
-            Container(
-              child: listTile("Main", 0),
-              color: Color(0xff0f1922),
-            ),
-            Container(
-              child: listTile("Maps", 1),
-              color: Color(0xff0f1922),
-            ),
-            AboutListTile(),
-          ],
+        child: Container(
+          color: Colors.pink,
+          child: ListView(
+            children: <Widget>[
+              DrawerHeader(child: Text("categories")),
+              listTile("Maps", 1),
+              AboutListTile(),
+            ],
+          ),
         ),
       ),
     );
   }
 
   Widget listTile(String title, int index) {
-    return ListTile(
-      contentPadding: EdgeInsets.symmetric(horizontal: 4),
-      title: Text(
-        title,
-        textScaleFactor: 3,
-        textAlign: TextAlign.center,
-        style: TextStyle(color: Colors.white),
-      ),
-      selected: _selectedDrawerIndex == index,
-      onTap: () => _onSelectItem(index),
-    );
+    return _giveEdge(
+          ListTile(
+            contentPadding: EdgeInsets.symmetric(horizontal: 4),
+            title: Text(
+              title,
+              textScaleFactor: 3,
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white),
+            ),
+            selected: _selectedDrawerIndex == index,
+            onTap: () => _onSelectItem(index),
+          ),
+        );
   }
 
   AppBar _buildAppBar() {
@@ -87,4 +86,28 @@ class _HomeScreenState extends State<HomeScreen> {
           fontSize: 32, fontWeight: FontWeight.bold, color: Color(0xffff4656)),
     );
   }
+}
+
+Widget _giveEdge(Widget child) {
+  return Container(
+      decoration: const BoxDecoration(
+        border: Border(
+          top: BorderSide(width: 1.0, color: Color(0xFFFFFFFFFF)),
+          left: BorderSide(width: 1.0, color: Color(0xFFFFFFFFFF)),
+          right: BorderSide(width: 1.0, color: Color(0xFFFF000000)),
+          bottom: BorderSide(width: 1.0, color: Color(0xFFFF000000)),
+        ),
+      ),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
+        decoration: const BoxDecoration(
+          border: Border(
+            top: BorderSide(width: 1.0, color: Color(0xFFFFDFDFDF)),
+            left: BorderSide(width: 1.0, color: Color(0xFFFFDFDFDF)),
+            right: BorderSide(width: 1.0, color: Color(0xFFFF7F7F7F)),
+            bottom: BorderSide(width: 1.0, color: Color(0xFFFF7F7F7F)),
+          ),
+        ),
+        child: child,
+      ));
 }
