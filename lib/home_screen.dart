@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:valorantapp/valorant_screen.dart';
 
-import 'map_screen.dart';
+import 'maps_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
