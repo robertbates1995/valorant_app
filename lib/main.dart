@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:valorantapp/home_screen.dart';
+import 'package:valorantapp/text_style.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,6 +24,8 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.blueGrey,
+        textTheme: TextTheme(headline1: TitleTextStyle, headline2: ButtonTextStyle),
+
       ),
       home: HomeScreen(),
     );
