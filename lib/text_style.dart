@@ -13,3 +13,9 @@ const ButtonTextStyle = TextStyle(
   fontWeight: FontWeight.w600,
   color: Colors.white,
 );
+
+const OverlayTextStyle = TextStyle(
+  fontSize: 58.0,
+  fontWeight: FontWeight.w800,
+  color: Colors.white,
+);
