@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:valorantapp/agents_screen.dart';
 import 'package:valorantapp/valorant_screen.dart';
+import 'package:valorantapp/weapons_screen.dart';
 import 'maps_screen.dart';
 
 enum PageIndex{
@@ -19,9 +21,9 @@ class _HomeScreenState extends State<HomeScreen> {
       case PageIndex.maps:
         return MapScreen(Theme.of(context));
       case PageIndex.agents:
-        return Text('TODO: Agents Screen');
+        return AgentsScreen(Theme.of(context));
       case PageIndex.weapons:
-        return Text('TODO: Weapons Screen');
+        return WeaponScreen(Theme.of(context));
       default: return Text('error');
     }
   }
@@ -66,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(
           title,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.display1//Theme.of(context).textTheme.headline2,
+          style: Theme.of(context).textTheme.headline4//Theme.of(context).textTheme.headline2,
         ),
         selected: _selectedDrawerIndex == index,
         onTap: () => _onSelectItem(index),

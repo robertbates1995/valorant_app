@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:valorantapp/map_detail.dart';
-import 'package:valorantapp/mock/mock_game_map.dart';
+import 'package:valorantapp/mock/mock_agent.dart';
 import 'package:valorantapp/models/game_map.dart';
 
-class MapScreen extends StatelessWidget {
+class AgentsScreen extends StatelessWidget {
   ThemeData theme;
 
-  MapScreen(this.theme);
+  AgentsScreen(this.theme);
 
   @override
   Widget build(BuildContext context) {
     // NOTE: we'll be moving this to a scoped_model later
-    final gameMaps = MockGameMaps.items;
+    final gameMaps = MockAgents.items;
 
     print(MediaQuery.of(context).size.width);
     return ListView(
@@ -42,7 +42,7 @@ class MapScreen extends StatelessWidget {
                   children: [
                     Container(
                       decoration:
-                          BoxDecoration(color: Colors.black.withOpacity(.5)),
+                      BoxDecoration(color: Colors.black.withOpacity(.5)),
                       child: Text(
                         singleMap.name,
                         style: theme.textTheme.headline3,
