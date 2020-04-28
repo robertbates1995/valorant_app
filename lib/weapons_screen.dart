@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:valorantapp/map_detail.dart';
+import 'package:valorantapp/weapon_detail.dart';
 import 'package:valorantapp/mock/mock_weapon.dart';
-import 'package:valorantapp/models/game_map.dart';
+import 'package:valorantapp/models/weapon.dart';
 
 class WeaponScreen extends StatelessWidget {
   ThemeData theme;
@@ -11,20 +11,33 @@ class WeaponScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // NOTE: we'll be moving this to a scoped_model later
-    final gameMaps = MockWeapons.items;
+    final gameWeapons = MockWeapons.items;
 
     print(MediaQuery.of(context).size.width);
-    return ListView(
-      children: gameMaps.map((singleMap) => _buildCell(singleMap,context)).toList(),
+    return Scaffold(
+      appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add_alert),
+            onPressed: () {} //TODO
+          )
+        ],
+        title: Text('Sort by Class:'),
+      ),
+      body: ListView(
+        children: gameWeapons
+            .map((singleWeapon) => _buildCell(singleWeapon, context))
+            .toList(),
+      ),
     );
   }
 
-  Widget _buildCell(GameMap singleMap, BuildContext context) {
+  Widget _buildCell(Weapon singleWeapon, BuildContext context) {
     return GestureDetector(
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MapDetail(singleMap)),
+            MaterialPageRoute(builder: (context) => MapDetail(singleWeapon)),
           );
         },
         child: AspectRatio(
@@ -33,7 +46,8 @@ class WeaponScreen extends StatelessWidget {
             children: <Widget>[
               AspectRatio(
                   aspectRatio: 1,
-                  child: Image.asset(singleMap.imageName, fit: BoxFit.contain)),
+                  child:
+                      Image.asset(singleWeapon.imageName, fit: BoxFit.contain)),
               Container(
                 alignment: Alignment.bottomCenter,
                 child: Column(
@@ -42,9 +56,9 @@ class WeaponScreen extends StatelessWidget {
                   children: [
                     Container(
                       decoration:
-                      BoxDecoration(color: Colors.black.withOpacity(.5)),
+                          BoxDecoration(color: Colors.black.withOpacity(.5)),
                       child: Text(
-                        singleMap.name,
+                        singleWeapon.name,
                         style: theme.textTheme.headline3,
                         textAlign: TextAlign.center,
                       ),
